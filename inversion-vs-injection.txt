@@ -1,0 +1,39 @@
+inversion : 
+on a une dependence vers une classe lorsqu'on doit importer un package de la classe.
+on va créer une interface I pour ne plus avoir à dependre de cette classe A. A implements I
+il nous faudra un adapteur pour finalement faire le lien avec l'implementation.
+
+bootstrap :
+
+*point de vue : lorsque le bootstrap devient lourd, c'est le moment de faire deux appli.
+on a jamais besoin de faire autre chose que du bootstraping.
+
+*dans la vraie vie : on a des application qui dépassent une certaine taille 
+-> bootstraping peinible, avec des factory et des factory et des factory
+ça marche
+
+
+INJECTION DE DEPENDENCES
+algorithme de tri topologique pour resoudre l'arbre de dependence et faire construire l'objet.
+
+dependences cyclique : 
+-> erreur
+-> injection tardive, par setter (mauvaise pratique)
+
+une interface qui a plusieurs implementations :
+-> fichiers de mapping
+-> annotations
+-> provider d'instances
+
+on peut utiliser de l'inversion pour faire de l'injection
+
+l'injection est une forme d'instanciation
+l'inversion est comment on gère l'arbre de dependence
+
+on peut pas utiliser de l'injection pour faire de l'inversion mais on peut utiliser de l'inversion pour faire de l'injection
+
+spring initializer pour demarrer rapidement un spring
+https://start.spring.io/
+
+
+Ne jamais faire de l'injection  par setter (fait uniquement pour gérer des situation de merde)
