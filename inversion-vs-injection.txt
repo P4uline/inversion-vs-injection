@@ -3,6 +3,16 @@ on a une dependence vers une classe lorsqu'on doit importer un package de la cla
 on va créer une interface I pour ne plus avoir à dependre de cette classe A. A implements I
 il nous faudra un adapteur pour finalement faire le lien avec l'implementation.
 
+L'adapteur est forcément fortement couplé avec la classe adapté (on new
+		Adaptee() dans l'adapteur)
+On ne fait pas d'inversion sur les value objects (objets définis par leur
+		etat, leur valeur et pas par un id). En fonction du contexte, un objet
+peut etre value object ou entity.
+
+Un objet service aura des dependence vers d'autres services. C'est la qu'on
+voudrait faire de l'inversion de dependences, pour pouvoir tester plus
+facilement, pour decoupler...
+
 bootstrap :
 
 *point de vue : lorsque le bootstrap devient lourd, c'est le moment de faire deux appli.
@@ -37,3 +47,38 @@ https://start.spring.io/
 
 
 Ne jamais faire de l'injection  par setter (fait uniquement pour gérer des situation de merde)
+Ne jamais faire de l'injection par champs
+Faire de l'injection par constructeur
+
+
+@PostConstruct est fait car on peut faire de l'injection par setter, ça permet
+de vérifier que l'objet est valide.
+
+
+inversion de controle : ce n'est pas moi qui gère le cycle de vie d'un objet.
+spring vs factory
+
+quand je j'appelle une factory, je gère le controle du cycle de vie de
+l'objet. La factory est un moyen de faire de l'injection en gardant le
+controle.
+spring permet de faire de l'injection avec de l'inversion de controle. La
+gestion du cycle de vie de l'objet ne se fait pas dans le code, c'est spring
+qui la gère.
+
+l'injection est une forme d'ioc. L'ioc est plus large que l'injection de
+dependences.
+Ioc est trop generique, il peut vouloir dire beaucoup de chose. Le pattern de
+command peut etre vu comme de l'ioc.
+
+si on a un god object, un provider,  qui s'occuper de la creation de tous les objets alors on
+a de l'injection de dependences. 
+
+
+inconveinients : 
+ajouter de la complexité (dans l'espoir de reduire la complexité globale) 
+
+
+avantages : 
+code est plus facile à raisonner
+tests unitaires possibles
+
